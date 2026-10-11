@@ -33,6 +33,16 @@ export default class MonsterList {
     this.renderMonstersCount();
   }
 
+  async deleteOneById(id) {
+    await DB.deleteOneById(id);
+    this.monsters.splice(
+      this.monsters.findIndex((monster) => monster.id == id),
+      1
+    );
+    this.domElt.querySelector(`[data-id='${id}']`).remove();
+    this.renderMonstersCount();
+  }
+
   render() {
     this.domElt.innerHTML = getTemplate();
     this.listDomElt = this.domElt.querySelector(".monsters-table tbody");
@@ -54,6 +64,10 @@ export default class MonsterList {
       this.domElt.querySelector(".new-name").value = "";
       this.domElt.querySelector(".new-danger").value = "";
       this.domElt.querySelector(".new-year").value = "";
+    });
+
+    this.listDomElt.addEventListener("monster:deleted", async (e) => {
+      await this.deleteOneById(e.detail.id);
     });
   }
 }
