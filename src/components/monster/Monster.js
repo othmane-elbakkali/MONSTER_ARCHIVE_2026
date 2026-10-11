@@ -10,6 +10,16 @@ export default class Monster {
     this.domElt = null;
   }
 
+  static isValid(data) {
+    return (
+      data.name !== "" &&
+      data.dangerLevel >= 1 &&
+      data.dangerLevel <= 5 &&
+      data.year >= 1950 &&
+      data.year <= 1969
+    );
+  }
+
   render() {
     const template = document.createElement("template");
     template.innerHTML = getTemplate(this);
