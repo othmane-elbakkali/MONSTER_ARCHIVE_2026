@@ -4,11 +4,11 @@ export default function getTemplate(monster) {
   return `
     <tr class="monster-row" data-id="${monster.id}">
       <td class="p-3 font-semibold">
-        <span class="isEditing-hidden">${monster.name}</span>
+        <span class="span-name isEditing-hidden">${monster.name}</span>
         <input type="text" class="input-name isEditing-visible field" value="${monster.name}" />
       </td>
       <td class="p-3">
-        <span class="isEditing-hidden">${monster.type}</span>
+        <span class="span-type isEditing-hidden">${monster.type}</span>
         <select class="input-type isEditing-visible field">
           <option ${monster.type === "Giant reptile" ? "selected" : ""}>Giant reptile</option>
           <option ${monster.type === "Alien" ? "selected" : ""}>Alien</option>
@@ -19,12 +19,12 @@ export default function getTemplate(monster) {
         </select>
       </td>
       <td class="p-3 whitespace-nowrap">
-        <span class="isEditing-hidden" title="Danger level ${monster.dangerLevel}">${monster.dangerLevel}</span>
+        <span class="span-danger isEditing-hidden" title="Danger level ${monster.dangerLevel}">${monster.dangerLevel}</span>
         <input type="number" min="1" max="5" class="input-danger isEditing-visible field" value="${monster.dangerLevel}" />
       </td>
       <td class="p-3">
-        <span class="isEditing-hidden">${monster.year}</span>
-        <input type="number" min="1950" max="1969" class="input-year isEditing-visible field" value="${monster.year}" />
+      <span class="span-year isEditing-hidden">${monster.year}</span> 
+       <input type="number" min="1950" max="1969" class="input-year isEditing-visible field" value="${monster.year}" />
       </td>
       <td class="p-3">
         <div class="flex justify-end gap-2">

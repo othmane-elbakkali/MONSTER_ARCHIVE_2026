@@ -33,6 +33,10 @@ export default class MonsterList {
     this.renderMonstersCount();
   }
 
+    async updateOne(monster) {
+    return await DB.updateOne(monster);
+  }
+
   async deleteOneById(id) {
     await DB.deleteOneById(id);
     this.monsters.splice(
@@ -64,6 +68,10 @@ export default class MonsterList {
       this.domElt.querySelector(".new-name").value = "";
       this.domElt.querySelector(".new-danger").value = "";
       this.domElt.querySelector(".new-year").value = "";
+    });
+
+        this.listDomElt.addEventListener("monster:updated", async (e) => {
+      await this.updateOne(e.detail.monster);
     });
 
     this.listDomElt.addEventListener("monster:deleted", async (e) => {
