@@ -19,6 +19,9 @@ export default class Monster {
       data.year <= 1969
     );
   }
+    getSkulls() {
+    return "☠️".repeat(this.dangerLevel);
+  }
 
   render() {
     const template = document.createElement("template");
@@ -39,7 +42,7 @@ export default class Monster {
     this.year = data.year;
     this.domElt.querySelector(".span-name").innerText = this.name;
     this.domElt.querySelector(".span-type").innerText = this.type;
-    this.domElt.querySelector(".span-danger").innerText = this.dangerLevel;
+    this.domElt.querySelector(".span-danger").innerText = this.getSkulls();
     this.domElt.querySelector(".span-danger").title = "Danger level " + this.dangerLevel;
     this.domElt.querySelector(".span-year").innerText = this.year;
     this.domElt.classList.remove("isEditing");
